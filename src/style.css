@@ -1,0 +1,357 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  color: #213b38;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+.muted {
+  color: #7a8986;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #66867f;
+  margin-bottom: 12px;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: #dbece4;
+  color: #185b4e;
+  border-radius: 10px;
+  font-size: 23px;
+  font-weight: 700;
+}
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+}
+.auth-story {
+  background: #123e3b;
+  color: #eff7f1;
+  display: flex;
+  flex-direction: column;
+  padding: 44px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.auth-story:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #ffffff13;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  right: -300px;
+  bottom: -250px;
+  box-shadow:
+    0 0 0 70px #ffffff04,
+    0 0 0 140px #ffffff03;
+  pointer-events: none;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.brand small {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #93b8aa;
+  margin-left: 8px;
+}
+.story-content {
+  margin: auto 0;
+  padding: 60px 0;
+  position: relative;
+  z-index: 1;
+}
+.story-content .eyebrow {
+  color: #9dc5b4;
+}
+.story-content h1 {
+  font-size: clamp(32px, 3.7vw, 56px);
+  line-height: 1.45;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+.story-content p {
+  color: #b3ccc3;
+  line-height: 1.9;
+  font-size: 16px;
+  margin-bottom: 36px;
+}
+.story-content .ant-space {
+  color: #bad4c9;
+  font-size: 13px;
+}
+.auth-footer {
+  font-size: 12px;
+  color: #8eb1a7;
+}
+.auth-form {
+  padding: 40px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbfcfb;
+}
+.auth-box {
+  max-width: 390px;
+  width: 100%;
+}
+.auth-box h2 {
+  margin-top: 18px;
+}
+.auth-note {
+  font-size: 12px;
+  margin-top: 24px;
+  text-align: center;
+}
+.workspace {
+  min-height: 100vh;
+}
+.ant-layout-sider {
+  border-right: 1px solid #e9edeb;
+}
+.sidebar-brand {
+  padding: 28px 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.nav-caption {
+  font-size: 11px;
+  color: #95a39f;
+  letter-spacing: 2px;
+  padding: 20px 27px 12px;
+}
+.ant-menu {
+  border-inline-end: none !important;
+}
+.sidebar-bottom {
+  position: absolute;
+  bottom: 30px;
+  padding: 0 26px;
+  color: #8b9b95;
+  font-size: 12px;
+}
+.topbar {
+  background: white !important;
+  border-bottom: 1px solid #e9edeb;
+  height: 78px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px !important;
+  gap: 12px;
+}
+.main-content {
+  padding: 34px 38px;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.page-heading h1 {
+  font-size: 29px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.page-heading p {
+  margin-bottom: 0;
+}
+.welcome-banner {
+  background: #e5efea;
+  border: 1px solid #d7e7df;
+  border-radius: 14px;
+  padding: 30px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.welcome-banner .ant-tag {
+  background: #f7fbf8;
+  border: 0;
+  color: #58746a;
+  font-size: 11px;
+  margin-bottom: 14px;
+}
+.welcome-banner h2 {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+.welcome-banner p {
+  color: #6f847c;
+}
+.banner-symbol {
+  font-size: 95px;
+  color: #a4c4b7;
+  margin: 0 35px;
+}
+.stats {
+  margin-bottom: 24px;
+}
+.ant-card {
+  box-shadow: 0 2px 5px #163f3303;
+  border-color: #e6ece8;
+}
+.ant-statistic-content {
+  font-weight: 650 !important;
+  margin-top: 12px;
+}
+.ant-statistic-content small {
+  font-size: 12px;
+  color: #91a097;
+  font-weight: 400;
+  margin-left: 5px;
+}
+.setup-step {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 26px;
+  line-height: 1.8;
+}
+.setup-step > .anticon {
+  color: #26725e;
+  font-size: 20px;
+  margin-top: 3px;
+}
+.setup-step p {
+  margin: 4px 0;
+}
+.setup-step .ant-btn {
+  padding-left: 0;
+}
+.event {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f3f1;
+}
+.event:last-child {
+  border: 0;
+}
+.event p {
+  font-size: 12px;
+  color: #8a9993;
+  margin: 5px 0 0;
+  overflow-wrap: anywhere;
+}
+.event time {
+  margin-left: auto;
+  color: #97a49f;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.event-dot {
+  width: 8px;
+  height: 8px;
+  background: #65a88e;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.org-details {
+  padding: 18px 0 30px;
+}
+.org-details h3 {
+  margin-top: 15px;
+}
+.footer {
+  color: #92a098;
+  font-size: 11px;
+  padding: 10px 38px 24px !important;
+}
+.footer span {
+  float: right;
+}
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-layout-sider-collapsed .sidebar-brand {
+  padding: 24px 13px;
+}
+.ant-layout-sider-collapsed .sidebar-brand > span + span,
+.ant-layout-sider-collapsed .nav-caption,
+.ant-layout-sider-collapsed .sidebar-bottom {
+  display: none;
+}
+@media (max-width: 800px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+  .auth-story {
+    padding: 24px;
+  }
+  .story-content {
+    padding: 30px 0;
+  }
+  .story-content h1 {
+    font-size: 30px;
+  }
+  .story-content p,
+  .auth-footer {
+    display: none;
+  }
+  .auth-form {
+    padding: 32px 24px;
+  }
+  .main-content {
+    padding: 24px 16px;
+  }
+  .topbar {
+    padding: 0 16px !important;
+    flex-wrap: wrap;
+    height: auto !important;
+    min-height: 80px;
+    line-height: normal !important;
+    padding-block: 12px !important;
+  }
+  .topbar .muted {
+    display: none;
+  }
+  .banner-symbol {
+    display: none;
+  }
+  .welcome-banner {
+    padding: 24px;
+  }
+  .event time {
+    white-space: normal;
+  }
+  .footer {
+    padding: 16px !important;
+  }
+  .footer span {
+    display: none;
+  }
+}
