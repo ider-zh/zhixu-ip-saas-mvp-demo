@@ -34,8 +34,6 @@ export default function ProjectGoalModal() {
         /* 禁用存储时仍可正常显示和关闭。 */
       }
     }
-    const timeout = window.setTimeout(() => setOpen(false), 5000);
-    return () => window.clearTimeout(timeout);
   }, [open]);
 
   return (
@@ -71,7 +69,7 @@ export default function ProjectGoalModal() {
         type="secondary"
         style={{ marginTop: 20, marginBottom: 0 }}
       >
-        5 秒后自动关闭，也可点击弹窗外的空白区域或右上角关闭按钮。
+        阅读完成后，点击弹窗外的空白区域或右上角关闭按钮。
       </Typography.Paragraph>
     </Modal>
   );

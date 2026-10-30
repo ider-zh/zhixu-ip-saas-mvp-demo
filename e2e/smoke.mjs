@@ -69,12 +69,13 @@ try {
     Number(initialGoalTimestamp) > 0,
     "Goal display time must be recorded while visible",
   );
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(6000);
   assert.ok(
     await goal.isVisible(),
-    "Project goals should remain visible before five seconds",
+    "Project goals must remain visible beyond the former five-second timeout",
   );
-  await goal.waitFor({ state: "hidden", timeout: 5500 });
+  await page.locator(".ant-modal-wrap").click({ position: { x: 8, y: 8 } });
+  await goal.waitFor({ state: "hidden" });
   await page.reload();
   assert.equal(
     await page.getByRole("dialog", { name: "项目开发目标" }).count(),
