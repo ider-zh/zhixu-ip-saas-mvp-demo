@@ -22,6 +22,8 @@
 
 首次进入会显示项目目标弹窗，5 秒后自动关闭，也可点击弹窗外空白区域提前关闭。同一浏览器有 1 小时冷却时间，冷却结束后再次打开页面会重新显示。
 
+界面预览：[登录页面](docs/screenshots/login.png) · [工作台](docs/screenshots/workspace.png) · [案件详情](docs/screenshots/case-detail.png)
+
 ## 已展示的能力
 
 - **工作台**：客户、案件、任务、完成数量与近期活动。
