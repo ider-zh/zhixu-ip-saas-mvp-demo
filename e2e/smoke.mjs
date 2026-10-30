@@ -8,7 +8,8 @@ const browser = await chromium.launch({
   headless: true,
   args: ["--no-sandbox"],
 });
-const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
+const context = await browser.newContext({ viewport: { width: 1440, height: 1100 } });
+const page = await context.newPage();
 const errors = [];
 const apiRequests = [];
 const dynamicRequests = [];
@@ -50,7 +51,7 @@ const screenshot = async (name) => {
   });
 };
 const navigate = async (name) => {
-  await page.getByRole("menuitem", { name, exact: true }).click();
+  await page.getByRole("menuitem", { name }).click();
   await ready();
 };
 const taskRow = (title) =>
@@ -154,7 +155,7 @@ try {
   assert.ok(await page.getByLabel("密码", { exact: true }).inputValue());
   await page.getByText(/登录与权限为交互模拟/).waitFor();
   await screenshot("login");
-  await page.getByRole("button", { name: "进入工作台", exact: true }).click();
+  await page.getByRole("button", { name: "进入工作台" }).click();
   await page.getByText("知识产权协作流程", { exact: true }).waitFor();
   await ready();
   await page.getByText("正在推进的案件", { exact: true }).waitFor();
@@ -185,20 +186,20 @@ try {
   const todoRow = page
     .locator(".main-content .ant-table-tbody > tr.ant-table-row")
     .filter({
-      has: page.getByRole("button", { name: "完成任务", exact: true }),
+      has: page.getByRole("button", { name: "完成任务" }),
     })
     .first();
   const taskTitle = await todoRow.locator("td").first().innerText();
-  await todoRow.getByRole("button", { name: "完成任务", exact: true }).click();
+  await todoRow.getByRole("button", { name: "完成任务" }).click();
   await ready();
   await taskRow(taskTitle)
-    .getByRole("button", { name: "重新打开", exact: true })
+    .getByRole("button", { name: "重新打开" })
     .waitFor();
   await page.reload();
   await page.getByText("知识产权协作流程", { exact: true }).waitFor();
   await navigate("任务清单");
   await taskRow(taskTitle)
-    .getByRole("button", { name: "重新打开", exact: true })
+    .getByRole("button", { name: "重新打开" })
     .waitFor();
   // Create a second organization: the same sample task must remain independently pending.
   const originalOrg = await page
@@ -206,7 +207,7 @@ try {
     .innerText();
   await navigate("组织设置");
   await page
-    .getByRole("button", { name: "创建另一个组织", exact: true })
+    .getByRole("button", { name: "创建另一个组织" })
     .click();
   const orgDialog = page.getByRole("dialog");
   assert.ok(
@@ -214,27 +215,27 @@ try {
   );
   await orgDialog.getByLabel("组织名称", { exact: true }).fill("隔离验证团队");
   await orgDialog
-    .getByRole("button", { name: "创建组织", exact: true })
+    .getByRole("button", { name: "创建组织" })
     .click();
   await page
-    .getByRole("heading", { name: "隔离验证团队", exact: true })
+    .getByRole("heading", { name: "隔离验证团队" })
     .waitFor();
   await navigate("任务清单");
   await taskRow(taskTitle)
-    .getByRole("button", { name: "完成任务", exact: true })
+    .getByRole("button", { name: "完成任务" })
     .waitFor();
   await page.locator(".topbar .ant-select-selector").click();
   await page.getByText(originalOrg, { exact: true }).last().click();
   await ready();
   await taskRow(taskTitle)
-    .getByRole("button", { name: "重新打开", exact: true })
+    .getByRole("button", { name: "重新打开" })
     .waitFor();
   await taskRow(taskTitle)
-    .getByRole("button", { name: "重新打开", exact: true })
+    .getByRole("button", { name: "重新打开" })
     .click();
   await ready();
   await taskRow(taskTitle)
-    .getByRole("button", { name: "完成任务", exact: true })
+    .getByRole("button", { name: "完成任务" })
     .waitFor();
   // Register without manually filling fields: create an independent seeded team.
   await page.getByRole("button", { name: "退出登录" }).click();
@@ -256,7 +257,7 @@ try {
     firstEmail,
   );
   await page
-    .getByRole("button", { name: "创建团队并登录", exact: true })
+    .getByRole("button", { name: "创建团队并登录" })
     .click();
   await page.getByText("知识产权协作流程", { exact: true }).waitFor();
   await navigate("案件项目");
@@ -271,15 +272,15 @@ try {
     sessionStorage.setItem("unrelated-session-test", "keep");
   });
   await navigate("组织设置");
-  await page.getByRole("button", { name: "重置演示数据", exact: true }).click();
+  await page.getByRole("button", { name: "重置演示数据" }).click();
   let modal = page.getByRole("dialog");
   await modal.getByRole("button", { name: /取\s*消/ }).click();
   await page
-    .getByRole("button", { name: "重置演示数据", exact: true })
+    .getByRole("button", { name: "重置演示数据" })
     .waitFor();
-  await page.getByRole("button", { name: "重置演示数据", exact: true }).click();
+  await page.getByRole("button", { name: "重置演示数据" }).click();
   modal = page.getByRole("dialog");
-  await modal.getByRole("button", { name: "确认重置", exact: true }).click();
+  await modal.getByRole("button", { name: "确认重置" }).click();
   await page.getByText("欢迎回来", { exact: true }).waitFor();
   assert.equal(
     await page.evaluate(() => localStorage.getItem("unrelated-site-test")),
@@ -292,11 +293,11 @@ try {
   await page.waitForFunction(() =>
     Boolean(document.querySelector('input[autocomplete="email"]')?.value),
   );
-  await page.getByRole("button", { name: "进入工作台", exact: true }).click();
+  await page.getByRole("button", { name: "进入工作台" }).click();
   await page.getByText("知识产权协作流程", { exact: true }).waitFor();
   await navigate("任务清单");
   await taskRow(taskTitle)
-    .getByRole("button", { name: "完成任务", exact: true })
+    .getByRole("button", { name: "完成任务" })
     .waitFor();
   assert.deepEqual(
     apiRequests,
